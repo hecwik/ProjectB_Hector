@@ -6,12 +6,13 @@ namespace ProjectB2_Hector
     {
         #region Clear
         public override void Clear()
-        { }
+        {
+            cards.Clear();
+        }
         #endregion
 
         #region Remove and Add related
-        public override void Add(PlayingCard card)
-        { }
+        public override void Add(PlayingCard card) => cards.Add(card);
         #endregion
 
         #region Poker Rank related
@@ -54,6 +55,7 @@ namespace ProjectB2_Hector
         private bool IsFlush => false;
         private bool IsStraight => false;
         private bool IsThreeOfAKind => false;
+
         private bool IsTwoPair
         {
             get
