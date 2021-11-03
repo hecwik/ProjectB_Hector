@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProjectB_Hector
+namespace ProjectB2_Hector
 {
     class Program
     {
@@ -172,6 +172,7 @@ namespace ProjectB_Hector
             {
                 winCount1++;
                 Console.WriteLine($"{nameof(player1)} won the round! Win nr: {winCount1}");
+
             }
             else if (player1.Highest.Value.CompareTo(player2.Highest.Value) < 0)
             {
@@ -254,6 +255,13 @@ namespace ProjectB_Hector
             }
             DetermineGameWinner();
             Console.ReadKey();
+
+            PokerHand Player = new PokerHand();
+            while (myDeck.Count > 5)
+            {
+                //Your code to Give 5 cards to the player and determine the rank
+                //Continue for as long as the deck has at least 5 cards 
+            }
         }
     }
 }
