@@ -69,7 +69,7 @@ namespace ProjectB2_Hector
         #endregion
 
         #region Creating a fresh Deck
-        public void Clear()
+        public virtual void Clear()
         {
             cards.Clear();
         }
