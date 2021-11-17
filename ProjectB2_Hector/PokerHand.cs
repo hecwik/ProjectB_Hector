@@ -17,14 +17,21 @@ namespace ProjectB2_Hector
 
         #region Poker Rank related
         //https://www.poker.org/poker-hands-ranking-chart/
-
+        /// <summary>
+        /// Got through a 5 card hand and determine the Rank according to
+        /// https://www.poker.org/poker-hands-ranking-chart/
+        /// After determination properties Rank and RankHiCard can be read.
+        /// In case Rank is PokerRank.TwoPair, RankHiCardPair1 and RankHiCardPair2 
+        /// are set and RankHiCard is set to higest of RankHiCardPair1 and RankHiCardPair2
+        /// </summary>
+        /// <returns>The pokerhand rank. PokerRank.Undefined in case Hand is not 5 cards</returns>
         //Hint: using backing fields
-        private PokerRank _rank = PokerRank.Unknown;
-        private PlayingCard _rankHigh = null;
+        private PokerRankEnum _rank = PokerRankEnum.Unknown;
+        private PlayingCard _rankHigh = null; 
         private PlayingCard _rankHighPair1 = null;
         private PlayingCard _rankHighPair2 = null;
 
-        public PokerRank Rank => _rank;
+        public PokerRankEnum Rank => _rank;
         public PlayingCard RankHiCard => _rankHigh;
         public PlayingCard RankHiCardPair1 => _rankHighPair1;
         public PlayingCard RankHiCardPair2 => _rankHighPair2;
@@ -65,9 +72,17 @@ namespace ProjectB2_Hector
         }
         private bool IsPair => false;
 
-        public PokerRank DetermineRank()
+        public PokerRankEnum DetermineRank(PokerHand playerHand)
         {
-            return PokerRank.Unknown;
+            for (int i = 0; i < playerHand.Count; i++)
+            {
+                // When hand has one pair.
+                if(playerHand.cards[i].Value == playerHand.cards[i + 1].Value)
+                {
+                    
+                }
+            }
+            return PokerRankEnum.Unknown;
         }
 
         //Hint: Clear rank
@@ -76,7 +91,7 @@ namespace ProjectB2_Hector
             _rankHigh = null;
             _rankHighPair1 = null;
             _rankHighPair2 = null;
-            _rank = PokerRank.Unknown;
+            _rank = PokerRankEnum.Unknown;
         }
         #endregion
     }

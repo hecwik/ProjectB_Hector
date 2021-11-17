@@ -10,7 +10,10 @@ namespace ProjectB2_Hector
     /// Enum type to represent a poker rank considering Color (suit) and value
     /// https://www.poker.org/poker-hands-ranking-chart/
     /// </summary>
-    public enum PokerRank { Unknown, HighCard, Pair, TwoPair, ThreeOfAKind, Straight, Flush, FullHouse, FourOfAKind, StraightFlush, RoyalFlush }
+    public enum PokerRankEnum { 
+        Unknown, HighCard, Pair, TwoPair, ThreeOfAKind, Straight, 
+        Flush, FullHouse, FourOfAKind, StraightFlush, RoyalFlush 
+    }
     
     interface IPokerHand
     {
@@ -23,7 +26,7 @@ namespace ProjectB2_Hector
         /// <summary>
         /// The rank of the pokerhand determined using DetermineRank().
         /// </summary>
-        public PokerRank Rank { get; }
+        public PokerRankEnum Rank { get; }
 
         /// <summary>
         /// The highest card in a rank when rank. 
@@ -49,6 +52,6 @@ namespace ProjectB2_Hector
         /// are set and RankHiCard is set to higest of RankHiCardPair1 and RankHiCardPair2
         /// </summary>
         /// <returns>The pokerhand rank. PokerRank.Undefined in case Hand is not 5 cards</returns>
-        public PokerRank DetermineRank();
+        public PokerRankEnum DetermineRank();
     }
 }

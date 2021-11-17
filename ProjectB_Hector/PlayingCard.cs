@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Text;
 namespace ProjectB_Hector
 {
     public class PlayingCard : IComparable<PlayingCard>, IPlayingCard
@@ -28,7 +28,7 @@ namespace ProjectB_Hector
                 switch (Color)
                 {
                     case PlayingCardColor.Clubs:
-                        unicodePic = "\u2663";
+                        unicodePic = $"\u2663";
                         break;
 
                     case PlayingCardColor.Diamonds:
@@ -44,6 +44,7 @@ namespace ProjectB_Hector
                         break;
 
                 }
+
                 /*
 				ALTERNATIVELY: Switch expression
 				
@@ -59,7 +60,7 @@ namespace ProjectB_Hector
 				};
 				*/
 
-                return $"{unicodePic} {Value,-7}";
+                return $"\t{unicodePic} {Value,-7}";
             }
         }
         public override string ToString() => ShortDescription;

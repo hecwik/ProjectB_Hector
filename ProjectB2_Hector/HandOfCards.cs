@@ -8,9 +8,7 @@ namespace ProjectB2_Hector
 {
     class HandOfCards : DeckOfCards, IHandOfCards
     {
-        #region Pick and Add related
-        public virtual void Add(PlayingCard card) => cards.Add(card);
-        #endregion
+        
 
         #region Highest Card related
         public PlayingCard Highest
@@ -32,6 +30,13 @@ namespace ProjectB2_Hector
             }
         }
 
+        #endregion
+        #region Pick and Add related
+
+        public virtual void Add(PlayingCard card)
+        {
+            cards.Add(card);
+        }
         #endregion
     }
 }

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectB2_Hector
 {
@@ -99,8 +96,11 @@ namespace ProjectB2_Hector
         #region Dealing
         public PlayingCard RemoveTopCard()
         {
+
+
             PlayingCard cardDrawn = cards[0];
             cards.RemoveAt(0);
+
 
             // Below code shifts the deck to put cards[1] in the place of cards[0]
             // and move along the other cards in the deck by one index position towards the top

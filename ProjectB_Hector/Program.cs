@@ -132,13 +132,13 @@ namespace ProjectB_Hector
                 // Add the removed top card to player hand.
                 player1.Add(myDeck.RemoveTopCard());
             }
-            string nrCardsLeftString1 = $"The deck now contains {myDeck.Count} cards.\n";
+            string nrCardsLeftString1 = $"\tThe deck now contains {myDeck.Count} cards.\n";
 
             for (int i = 0; i < nrCardsToPlayer; i++)
             {
                 player2.Add(myDeck.RemoveTopCard());
             }
-            string nrCardsLeftString2 = $"The deck now contains {myDeck.Count} cards.\n";
+            string nrCardsLeftString2 = $"\tThe deck now contains {myDeck.Count} cards.\n";
 
             // Display the hands.
             ShowHand(player1, nrCardsToPlayer, nrCardsLeftString1);
@@ -192,21 +192,23 @@ namespace ProjectB_Hector
             string nameOfPlayer = "";
             if (player == player1)
                 nameOfPlayer = "Player 1";
+
             else if (player == player2)
                 nameOfPlayer = "Player 2";
 
+            // Invoke sort() to display cards in value order.
             player.Sort();
 
             if (player.Count > 1)
             {
-                Console.WriteLine($"{nrOfCards} cards given to {nameOfPlayer}.\n");
-                Console.WriteLine($"{nameOfPlayer}'s hand:\n{player}\n");
-                Console.WriteLine($"Lowest card: {player.Lowest} & Highest card: {player.Highest}\n");
+                Console.WriteLine($"\t{nrOfCards} cards given to {nameOfPlayer}.\n");
+                Console.WriteLine($"\t{nameOfPlayer}'s hand:\n{player}\n");
+                Console.WriteLine($"\tLowest card: {player.Lowest} & Highest card: {player.Highest}\n");
             }
             else
             {
-                Console.WriteLine($"{nrOfCards} cards given to {nameOfPlayer}.\n");
-                Console.WriteLine($"{nameOfPlayer}'s card:\n{player}\n");
+                Console.WriteLine($"\t{nrOfCards} cards given to {nameOfPlayer}.\n");
+                Console.WriteLine($"\t{nameOfPlayer}'s card:\n{player}\n");
             }
 
             Console.WriteLine(nrCardsLeftString);
@@ -221,12 +223,12 @@ namespace ProjectB_Hector
             TryReadNrOfRounds(out int NrOfRounds);
             myDeck.CreateFreshDeck();
             myDeck.Shuffle();
-            Console.WriteLine(myDeck.ToString());
+            Console.WriteLine(myDeck);
 
             for (int i = 1; i <= NrOfRounds; i++)
             {
                 Console.Clear();
-                Console.WriteLine($"\tPlaying round nr {i}\n");
+                Console.WriteLine($"\n\t\t\t\tPlaying round nr {i}\n");
                 Deal(myDeck, NrOfCards, player1, player2);
                 DetermineWinner(player1, player2);
                 Console.WriteLine();
