@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectB_Hector
 {
@@ -21,7 +17,7 @@ namespace ProjectB_Hector
         #endregion
 
         #region ToString() related
-        string ShortDescription
+        private string ShortDescription
         {
             //Use switch statment or switch expression
             //https://en.wikipedia.org/wiki/Playing_cards_in_Unicode
@@ -55,7 +51,7 @@ namespace ProjectB_Hector
 					PlayingCardColor.Hearts   => "\u2665",
 					PlayingCardColor.Spades   => "\u2660",
 
-					_                         => default
+					                        _ => default
 				};
 				*/
 

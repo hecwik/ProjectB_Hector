@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectB_Hector
 {
@@ -88,7 +85,6 @@ namespace ProjectB_Hector
                 {
                     // set members values to the enum objects' current value
                     cards.Add(new PlayingCard { Color = color, Value = value });
-
                 }
             }
         }

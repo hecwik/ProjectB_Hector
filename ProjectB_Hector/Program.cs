@@ -5,11 +5,12 @@ namespace ProjectB_Hector
     class Program
     {
         // create deckofcards annd handofcards outside main method as fields of class program
-        public static DeckOfCards myDeck = new DeckOfCards();
+        private static DeckOfCards myDeck = new DeckOfCards();
         public static HandOfCards player1 = new HandOfCards();
         public static HandOfCards player2 = new HandOfCards();
-        public static int winCount1;
-        public static int winCount2;
+        static int winCount1;
+        static int winCount2;
+
         static void Main(string[] args)
         {
             PlaySomeCards(player1, player2);
@@ -183,7 +184,7 @@ namespace ProjectB_Hector
                 Console.WriteLine($"Round tie!");
             }
         }
-        public static void DetermineGameWinner()
+        private static void DetermineGameWinner()
         {
             if (winCount1 > winCount2)
             {
@@ -228,8 +229,8 @@ namespace ProjectB_Hector
             Console.WriteLine(nrCardsLeft);
 
         }
-        public static void CardGame()
 
+        private static void CardGame()
         {
             Console.Clear();
             Console.WriteLine("\n\tLet's play a game of Highest Card with two players.");
