@@ -30,15 +30,19 @@ namespace ProjectB_Hector
                     case PlayingCardColor.Clubs:
                         unicodePic = "\u2663";
                         break;
+
                     case PlayingCardColor.Diamonds:
                         unicodePic = "\u2666";
                         break;
+
                     case PlayingCardColor.Hearts:
                         unicodePic = "\u2665";
                         break;
+
                     case PlayingCardColor.Spades:
                         unicodePic = "\u2660";
                         break;
+
                 }
                 /*
 				ALTERNATIVELY: Switch expression
@@ -51,7 +55,7 @@ namespace ProjectB_Hector
 					PlayingCardColor.Hearts   => "\u2665",
 					PlayingCardColor.Spades   => "\u2660",
 
-					                        _ => default
+					_                         => default
 				};
 				*/
 

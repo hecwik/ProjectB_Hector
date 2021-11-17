@@ -60,6 +60,7 @@ namespace ProjectB_Hector
                     }
                 }
             }
+
             if (Count == MaxNrOfCards)
                 Console.WriteLine($"Deck sorted, it now has {Count} cards.");
         }

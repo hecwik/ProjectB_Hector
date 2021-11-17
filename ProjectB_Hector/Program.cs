@@ -4,12 +4,11 @@ namespace ProjectB_Hector
 {
     class Program
     {
-        // create deckofcards annd handofcards outside main method as fields of class program
-        private static DeckOfCards myDeck = new DeckOfCards();
+        // create deckofcards annd handofcards outside main method as fields of class program.
+        private static readonly DeckOfCards myDeck = new DeckOfCards();
         public static HandOfCards player1 = new HandOfCards();
         public static HandOfCards player2 = new HandOfCards();
-        static int winCount1;
-        static int winCount2;
+        private static int s_winCount1, s_winCount2;
 
         static void Main(string[] args)
         {
@@ -32,7 +31,7 @@ namespace ProjectB_Hector
             if (Int32.TryParse(userInput, out int resOutput))
             {
                 NrOfCards = resOutput;
-                // return true since cards were read
+                // Return true since cards were read.
                 return true;
             }
             else if (userInput == "q" || userInput == "Q")
@@ -88,9 +87,7 @@ namespace ProjectB_Hector
                 Console.Clear();
                 Console.WriteLine($"\n\t{cardSymbols} Welcome to the Card Game! {cardSymbols}");
                 Console.WriteLine($"\n\t1. Play Cards");
-                Console.WriteLine($"\n\t2. Sort and show the deck");
-                Console.WriteLine($"\n\t3. Shuffle and show the deck");
-                Console.WriteLine($"\n\t4. Quit");
+                Console.WriteLine($"\n\t2. Quit");
 
                 if (Int32.TryParse(Console.ReadLine(), out int resOutput))
                 {
@@ -101,20 +98,6 @@ namespace ProjectB_Hector
                             break;
 
                         case 2:
-                            myDeck.Sort();
-                            Console.WriteLine(myDeck);
-
-                            Console.ReadKey();
-                            break;
-
-                        case 3:
-                            myDeck.Shuffle();
-                            Console.WriteLine(myDeck);
-                            Console.WriteLine("Press anywhere to continue...\n");
-                            Console.ReadKey();
-                            break;
-
-                        case 4:
                             Console.WriteLine("Thank you for playing!\n");
                             isRunning = false;
                             break;
@@ -139,12 +122,12 @@ namespace ProjectB_Hector
         /// <param name="player2">Player 2</param>
         private static void Deal(DeckOfCards myDeck, int nrCardsToPlayer, HandOfCards player1, HandOfCards player2)
         {
-            // clear both hands before adding new cards
+            // Clear both hands before adding new cards.
             player1.Clear();
             player2.Clear();
             for (int i = 0; i < nrCardsToPlayer; i++)
             {
-                // adds the removed top card to player hand
+                // Add the removed top card to player hand.
                 player1.Add(myDeck.RemoveTopCard());
             }
             string nrCardsLeft1 = $"The deck now contains {myDeck.Count} cards.\n";
@@ -155,7 +138,7 @@ namespace ProjectB_Hector
             }
             string nrCardsLeft2 = $"The deck now contains {myDeck.Count} cards.\n";
 
-            // displays the hands
+            // Display the hands.
             ShowHand(player1, nrCardsToPlayer, nrCardsLeft1);
             ShowHand(player2, nrCardsToPlayer, nrCardsLeft2);
         }
@@ -171,13 +154,13 @@ namespace ProjectB_Hector
 
             if (player1.Highest.Value.CompareTo(player2.Highest.Value) > 0)
             {
-                winCount1++;
-                Console.WriteLine($"{nameof(player1)} won the round! Win nr: {winCount1}");
+                s_winCount1++;
+                Console.WriteLine($"{nameof(player1)} won the round! Win nr: {s_winCount1}");
             }
             else if (player1.Highest.Value.CompareTo(player2.Highest.Value) < 0)
             {
-                winCount2++;
-                Console.WriteLine($"{nameof(player2)} won the round! Win nr: {winCount2}");
+                s_winCount2++;
+                Console.WriteLine($"{nameof(player2)} won the round! Win nr: {s_winCount2}");
             }
             else if (player1.Highest.Value.CompareTo(player2.Highest.Value) == 0)
             {
@@ -186,23 +169,23 @@ namespace ProjectB_Hector
         }
         private static void DetermineGameWinner()
         {
-            if (winCount1 > winCount2)
+            if (s_winCount1 > s_winCount2)
             {
-                Console.WriteLine($"\n\tPlayer 1 wins the game {winCount1} to {winCount2}!");
-                winCount1 = 0;
-                winCount2 = 0;
+                Console.WriteLine($"\n\tPlayer 1 wins the game {s_winCount1} to {s_winCount2}!");
+                s_winCount1 = 0;
+                s_winCount2 = 0;
             }
-            else if (winCount1 < winCount2)
+            else if (s_winCount1 < s_winCount2)
             {
-                Console.WriteLine($"\n\tPlayer 2 wins the game {winCount2} to {winCount1}!");
-                winCount1 = 0;
-                winCount2 = 0;
+                Console.WriteLine($"\n\tPlayer 2 wins the game {s_winCount2} to {s_winCount1}!");
+                s_winCount1 = 0;
+                s_winCount2 = 0;
             }
             else
             {
-                Console.WriteLine($"\n\tThe game was tied! P1: {winCount1} to P2: {winCount2}");
-                winCount1 = 0;
-                winCount2 = 0;
+                Console.WriteLine($"\n\tThe game was tied! P1: {s_winCount1} to P2: {s_winCount2}");
+                s_winCount1 = 0;
+                s_winCount2 = 0;
             }
         }
         private static void ShowHand(HandOfCards player, int nrOfCards, string nrCardsLeft)
