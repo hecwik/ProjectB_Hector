@@ -15,7 +15,7 @@ namespace ProjectB2_Hector
     interface IPokerHand
     {
         //Override Clear in DeckOfCards to also clear rank
-        public void Clear();
+        public void Clear() { }
 
         //Override Add in HandOfCards to also clear rank
         public void Add(PlayingCard card); 
