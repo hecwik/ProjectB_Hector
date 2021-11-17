@@ -80,7 +80,8 @@ namespace ProjectB_Hector
 
         public static void PlaySomeCards(HandOfCards player1, HandOfCards player2)
         {
-            string cardSymbols = "\u2663 \u2666 \u2665 \u2660";
+            string cardSymbols = $"\u2663 \u2666 \u2665 \u2660";
+
             bool isRunning = true;
             while (isRunning)
             {
@@ -130,17 +131,17 @@ namespace ProjectB_Hector
                 // Add the removed top card to player hand.
                 player1.Add(myDeck.RemoveTopCard());
             }
-            string nrCardsLeft1 = $"The deck now contains {myDeck.Count} cards.\n";
+            string nrCardsLeftString1 = $"The deck now contains {myDeck.Count} cards.\n";
 
             for (int i = 0; i < nrCardsToPlayer; i++)
             {
                 player2.Add(myDeck.RemoveTopCard());
             }
-            string nrCardsLeft2 = $"The deck now contains {myDeck.Count} cards.\n";
+            string nrCardsLeftString2 = $"The deck now contains {myDeck.Count} cards.\n";
 
             // Display the hands.
-            ShowHand(player1, nrCardsToPlayer, nrCardsLeft1);
-            ShowHand(player2, nrCardsToPlayer, nrCardsLeft2);
+            ShowHand(player1, nrCardsToPlayer, nrCardsLeftString1);
+            ShowHand(player2, nrCardsToPlayer, nrCardsLeftString2);
         }
 
         /// <summary>
@@ -151,7 +152,6 @@ namespace ProjectB_Hector
         /// <param name="player2">Player 2</param>
         private static void DetermineWinner(HandOfCards player1, HandOfCards player2)
         {
-
             if (player1.Highest.Value.CompareTo(player2.Highest.Value) > 0)
             {
                 s_winCount1++;
@@ -162,7 +162,7 @@ namespace ProjectB_Hector
                 s_winCount2++;
                 Console.WriteLine($"{nameof(player2)} won the round! Win nr: {s_winCount2}");
             }
-            else if (player1.Highest.Value.CompareTo(player2.Highest.Value) == 0)
+            else
             {
                 Console.WriteLine($"Round tie!");
             }
@@ -172,6 +172,7 @@ namespace ProjectB_Hector
             if (s_winCount1 > s_winCount2)
             {
                 Console.WriteLine($"\n\tPlayer 1 wins the game {s_winCount1} to {s_winCount2}!");
+                //resets the win scores
                 s_winCount1 = 0;
                 s_winCount2 = 0;
             }
@@ -183,12 +184,12 @@ namespace ProjectB_Hector
             }
             else
             {
-                Console.WriteLine($"\n\tThe game was tied! P1: {s_winCount1} to P2: {s_winCount2}");
+                Console.WriteLine($"\n\tThe game was tied!");
                 s_winCount1 = 0;
                 s_winCount2 = 0;
             }
         }
-        private static void ShowHand(HandOfCards player, int nrOfCards, string nrCardsLeft)
+        private static void ShowHand(HandOfCards player, int nrOfCards, string nrCardsLeftString)
         {
             string nameOfPlayer = "";
             if (player == player1)
@@ -209,7 +210,7 @@ namespace ProjectB_Hector
                 Console.WriteLine($"{nameOfPlayer}'s card:\n{player}\n");
             }
 
-            Console.WriteLine(nrCardsLeft);
+            Console.WriteLine(nrCardsLeftString);
 
         }
 

@@ -97,6 +97,7 @@ namespace ProjectB_Hector
         public PlayingCard RemoveTopCard()
         {
             PlayingCard cardDrawn = cards[0];
+            // using built in removeAt to remove card at top of the deck index
             cards.RemoveAt(0);
 
             // Below code shifts the deck to put cards[1] in the place of cards[0]
