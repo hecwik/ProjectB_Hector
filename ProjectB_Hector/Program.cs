@@ -126,6 +126,7 @@ namespace ProjectB_Hector
             // Clear both hands before adding new cards.
             player1.Clear();
             player2.Clear();
+
             for (int i = 0; i < nrCardsToPlayer; i++)
             {
                 // Add the removed top card to player hand.
@@ -173,20 +174,17 @@ namespace ProjectB_Hector
             {
                 Console.WriteLine($"\n\tPlayer 1 wins the game {s_winCount1} to {s_winCount2}!");
                 //resets the win scores
-                s_winCount1 = 0;
-                s_winCount2 = 0;
+                s_winCount1 = 0; s_winCount2 = 0;
             }
             else if (s_winCount1 < s_winCount2)
             {
                 Console.WriteLine($"\n\tPlayer 2 wins the game {s_winCount2} to {s_winCount1}!");
-                s_winCount1 = 0;
-                s_winCount2 = 0;
+                s_winCount1 = 0; s_winCount2 = 0;
             }
             else
             {
                 Console.WriteLine($"\n\tThe game was tied!");
-                s_winCount1 = 0;
-                s_winCount2 = 0;
+                s_winCount1 = 0; s_winCount2 = 0;
             }
         }
         private static void ShowHand(HandOfCards player, int nrOfCards, string nrCardsLeftString)
@@ -198,6 +196,7 @@ namespace ProjectB_Hector
                 nameOfPlayer = "Player 2";
 
             player.Sort();
+
             if (player.Count > 1)
             {
                 Console.WriteLine($"{nrOfCards} cards given to {nameOfPlayer}.\n");
