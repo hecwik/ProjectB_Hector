@@ -50,12 +50,12 @@ namespace ProjectB_Hector
 
 				string unicodePic = Color switch
 				{
-					PlayingCardColor.Clubs => "\u2663",
+					PlayingCardColor.Clubs    => "\u2663",
 					PlayingCardColor.Diamonds => "\u2666",
-					PlayingCardColor.Hearts => "\u2665",
-					PlayingCardColor.Spades => "\u2660",
+					PlayingCardColor.Hearts   => "\u2665",
+					PlayingCardColor.Spades   => "\u2660",
 
-					_ => default
+					_                         => default
 				};
 				*/
 
