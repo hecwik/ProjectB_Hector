@@ -8,8 +8,6 @@ namespace ProjectB2_Hector
 {
     class HandOfCards : DeckOfCards, IHandOfCards
     {
-        
-
         #region Highest Card related
         public PlayingCard Highest
         {

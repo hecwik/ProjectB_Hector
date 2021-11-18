@@ -2,19 +2,8 @@
 
 namespace ProjectB2_Hector
 {
-    class PokerHand : HandOfCards
+    class PokerHand : HandOfCards, IPokerHand
     {
-        #region Clear
-        public override void Clear()
-        {
-            cards.Clear();
-        }
-        #endregion
-
-        #region Remove and Add related
-        public override void Add(PlayingCard card) => cards.Add(card);
-        #endregion
-
         #region Poker Rank related
         //https://www.poker.org/poker-hands-ranking-chart/
         /// <summary>
@@ -39,8 +28,13 @@ namespace ProjectB2_Hector
         //Hint: Worker Methods to examine a sorted hand
         private int NrSameValue(int firstValueIdx, out int lastValueIdx, out PlayingCard HighCard) 
         {
-            lastValueIdx = 0;
+            
             HighCard = null;
+
+
+            lastValueIdx = 0;
+            
+            
             return 0; 
         }
         private bool IsSameColor(out PlayingCard HighCard)
@@ -55,7 +49,13 @@ namespace ProjectB2_Hector
         }
 
         //Hint: Worker Properties to examine each rank
-        private bool IsRoyalFlush => false;
+        private bool IsRoyalFlush 
+        {
+            get 
+            {
+                return false;
+            }
+        }
         private bool IsStraightFlush => false;
         private bool IsFourOfAKind => false;
         private bool IsFullHouse => false;
@@ -70,18 +70,17 @@ namespace ProjectB2_Hector
                 return false;
             }
         }
-        private bool IsPair => false;
-
-        public PokerRankEnum DetermineRank(PokerHand playerHand)
+        private bool IsPair 
         {
-            for (int i = 0; i < playerHand.Count; i++)
+            get
             {
-                // When hand has one pair.
-                if(playerHand.cards[i].Value == playerHand.cards[i + 1].Value)
-                {
-                    
-                }
+                return true;
             }
+        }
+
+        public PokerRankEnum DetermineRank()
+        {
+            
             return PokerRankEnum.Unknown;
         }
 
@@ -93,6 +92,15 @@ namespace ProjectB2_Hector
             _rankHighPair2 = null;
             _rank = PokerRankEnum.Unknown;
         }
+        #endregion
+
+        #region Clear
+        public override void Clear() => cards.Clear();
+        
+        #endregion
+
+        #region Remove and Add related
+        public override void Add(PlayingCard card) => cards.Add(card);
         #endregion
     }
 }

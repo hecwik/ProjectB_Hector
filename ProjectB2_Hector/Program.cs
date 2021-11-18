@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace ProjectB2_Hector
 {
     class Program
@@ -7,7 +8,7 @@ namespace ProjectB2_Hector
         public static DeckOfCards myDeck = new DeckOfCards();
         public static PokerHand player = new PokerHand();
 
-        public static int MaxNrOfCards = 5;
+        protected const int MaxCardsInHand = 5;
         public static int NrOfCardsLeft = myDeck.Count;
         static void Main(string[] args)
         {
@@ -25,12 +26,8 @@ namespace ProjectB2_Hector
 
             while (myDeck.Count > 5)
             {
-                for (int i = 0; i < MaxNrOfCards; i++)
-                {
-                    Deal(myDeck, player);
-                    ShowHand();
-                    
-                }
+                Deal(myDeck, player);
+                ShowHand();
             }
         }
 
@@ -46,7 +43,7 @@ namespace ProjectB2_Hector
         {
             // clear both hands before adding new cards
             player.Clear();
-            for (int i = 0; i < MaxNrOfCards; i++)
+            for (int i = 0; i < MaxCardsInHand; i++)
             {
                 // adds the removed top card to player hand
                 player.Add(myDeck.RemoveTopCard());

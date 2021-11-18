@@ -15,14 +15,9 @@ namespace ProjectB2_Hector
         Flush, FullHouse, FourOfAKind, StraightFlush, RoyalFlush 
     }
     
-    interface IPokerHand
+    interface IPokerHand : IHandOfCards
     {
-        //Override Clear in DeckOfCards to also clear rank
-        public void Clear() { }
-
-        //Override Add in HandOfCards to also clear rank
-        public void Add(PlayingCard card); 
-
+        
         /// <summary>
         /// The rank of the pokerhand determined using DetermineRank().
         /// </summary>
